@@ -16,11 +16,11 @@ httpService
     userId: 1,
   })
   .then((res) => console.log(res))
-  .catch((err) => console.log("Error: " + err.message));
+  .catch((err) => console.log(`Error: ${err.message}`));
 
 // Make a Get Request
 httpService
   .get("https://jsonplaceholder.typicode.com/todos/1")
   .then((res) => console.log(res))
-  .catch((err) => console.log("Error: " + err.message));
+  .catch((err) => console.log(`Error: ${err.message}`));
 ```
