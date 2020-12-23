@@ -1,40 +1,18 @@
 class HttpService {
-	async post(url, data = null) {
-		await fetch(url, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/x-www-form-urlencoded",
-			},
-			body: JSON.stringify(data),
-		})
-			.then((response) => response.json())
-			.then((response) => {
-				this.responseText = response;
-			});
+  post(url, data = null) {
+    return fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: JSON.stringify(data),
+    }).then((response) => response.json());
+  }
 
-		return this.responseText;
-	}
-
-	async get(url, data = null) {
-		await fetch(url, {
-			method: "GET",
-			headers: {
-				"Content-Type": "application/x-www-form-urlencoded",
-			},
-			body: JSON.stringify(data),
-		})
-			.then((response) => response.json())
-			.then((response) => console.log(response));
-	}
+  get(url) {
+    return fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    }).then((response) => response.json());
+  }
 }
-
-// Instantiate a HTTPService
-const httpService = new HttpService();
-
-// Make a Post Request
-httpService
-	.post("http://keke.api.binemmanuel.com/auth/login", {
-		username: _username,
-		password: _password,
-	})
-	.then((res) => console.log(res));
